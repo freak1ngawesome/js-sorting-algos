@@ -1,2 +1,2 @@
-# алгоитмы сортировки на js/sorting algorithms on js
+# алгоритмы сортировки на js/sorting algorithms on js
 

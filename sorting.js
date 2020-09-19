@@ -61,4 +61,28 @@ function quickSort(arr){
     return [...quickSort(less), pivot, ...quickSort(more)];  // рекурсивно вызываем для массивов less и more
   }
 }
-      
+
+// Сортировка слиянием                                 // ассимптотическая сложность сортировки - O(n) = nlog(n), средняя - θ(n) = nlog(n)
+function mergeSort(arr){
+  if (arr.length < 2) return arr;                      // если длина массива 1, то возвращаем массив - условие выхода из рекурсии
+  let middle = Math.floor(arr.length / 2);             // выбираем индекс посередине делимого массива
+  let leftArr = arr.slice(0,middle);                   // в массив leftArr кладем элементы слева от middle
+  let rightArr = arr.slice(middle,arr.length);         // в массив rightArr кладем элементы справа от middle
+  
+  return merge(mergeSort(leftArr),mergeSort(rightArr));// возвращаем результат слияния рекурсивно вызываемых функций
+}
+
+function merge(left,right){
+  let result = [];                                     // создаем пустой массив для результата
+  while (left.length && right.length){                 // сортируем переданные массивы
+    if (left[0] <= right[0]){
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  while (left.length) result.push(left.shift());      // если в массиве осталиь элементы - добавляем их в результат
+  while (right.length) result.push(right.shift());    // если в массиве осталиь элементы - добавляем их в результат
+  return result;
+}
+

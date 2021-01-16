@@ -42,25 +42,7 @@ function insertionSort(arr){
   return arr;
 }
 
-// быстрая сортировка                                 // ассимптотическая сложность сортировки - O(n) = n^2, средняя - θ(n) = nlog(n)
-function quickSort(arr){
-  if (arr.length < 2){                                // условие выхода из рекурсии
-    return arr;
-  } else {
-    let pivot = arr[Math.floor(Math.random() * arr.length)]; // выбираем опорный элемент, в данном случае случайно из элементов массива
-    let less = [];                                           // создаем массив меньших элементов
-    let more = [];                                           // создаем массив больших элементов
-    for (let i = 0; i < arr.length; i++){                    // для каждого элемента массива
-      if (arr[i] >= pivot){                                   // проверяем , если он больше опорного, то добавляем в массив more
-        more.push(arr[i]);
-      }
-      if (arr[i] < pivot){                                   // проверяем , если он меньше опорного, то добавляем в массив less
-        less.push(arr[i]);
-      }
-    }
-    return [...quickSort(less), pivot, ...quickSort(more)];  // рекурсивно вызываем для массивов less и more
-  }
-}
+
 
 // Сортировка слиянием                                 // ассимптотическая сложность сортировки - O(n) = nlog(n), средняя - θ(n) = nlog(n)
 function mergeSort(arr){
